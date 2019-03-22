@@ -1,5 +1,5 @@
 let counter = 0;
-const nextName = (pfx: string = 'use-css-') =>
+const nextName = (pfx: string = 'v-css-') =>
     pfx + (counter++).toString(36);
 
 // By default generate class name selectors.

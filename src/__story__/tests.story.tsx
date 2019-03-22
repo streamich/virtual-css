@@ -1,14 +1,23 @@
+/** @jsx jsx */
+import {useCss, Box, Text, jsx} from '..';
 import * as React from 'react';
 import {storiesOf} from '@storybook/react';
-import {useCss} from '..';
+
+declare module 'react' {
+  interface DOMAttributes<T> {
+      css?: any;
+  }
+}
+
+const hoverCss = {
+  color: 'tomato',
+  '&:hover': {
+    color: 'orange',
+  },
+};
 
 const Demo1 = () => {
-  const className = useCss({
-    color: 'tomato',
-    '&:hover': {
-      color: 'orange',
-    },
-  });
+  const className = useCss(hoverCss);
   return <div className={className}>Hover me!</div>;
 };
 
@@ -71,3 +80,6 @@ const Demo2 = () => {
 storiesOf('Tests', module)
   .add('Pseudo selector', () => <Demo1 />)
   .add('Buttons', () => <Demo2 />)
+  .add('<Box>', () => <Box css={hoverCss}>This should be tomato</Box>)
+  .add('<Text>', () => <Text css={hoverCss}>This should be tomato</Text>)
+  .add('<div>', () => <div css={hoverCss}>This should be tomato</div>)
