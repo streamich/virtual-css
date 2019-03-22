@@ -32,7 +32,9 @@
     "storybook:clean": "rimraf storybook-static"
   },
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "nano-css": "^5.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@commitlint/cli": "^7.5.2",
