@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import {useCss, Box, Text, jsx} from '..';
-import * as React from 'react';
+import {useCss, useCssx, Box, Text, jsx} from '..';
 import {storiesOf} from '@storybook/react';
 
 declare module 'react' {
@@ -19,6 +18,11 @@ const hoverCss = {
 const Demo1 = () => {
   const className = useCss(hoverCss);
   return <div className={className}>Hover me!</div>;
+};
+
+const Demo1x = () => {
+  const css = useCssx(hoverCss);
+  return <div {...css}>Hover me!</div>;
 };
 
 const Button = ({ghost = false, children}) => {
@@ -78,8 +82,9 @@ const Demo2 = () => {
 };
 
 storiesOf('Tests', module)
-  .add('Pseudo selector', () => <Demo1 />)
+  .add('useCss', () => <Demo1 />)
+  .add('useCssx', () => <Demo1x />)
   .add('Buttons', () => <Demo2 />)
-  .add('<Box>', () => <Box css={hoverCss}>This should be tomato</Box>)
-  .add('<Text>', () => <Text css={hoverCss}>This should be tomato</Text>)
-  .add('<div>', () => <div css={hoverCss}>This should be tomato</div>)
+  .add('<Box>', () => <Box css={hoverCss}>Hover me!</Box>)
+  .add('<Text>', () => <Text css={hoverCss}>Hover me!</Text>)
+  .add('<div>', () => <div css={hoverCss}>Hover me!</div>)
